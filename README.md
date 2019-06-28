@@ -17,11 +17,18 @@ even started.
 
 Due to that second one, this process will only work on Linux.
 
-### Test-Driven Infrastructure
+## Running the Ansible Playbook
+
+Since this takes place all on the local system, no Ansible inventory is needed. However, Ansible interprets a single word to the inventory argument as a file, so we force a single non-file hostname using a trailing comma>
+
+    $ ansible-playbook -vvv -i localhost, create-azure-arm-docker-image.yaml
+
+## Test-Driven Infrastructure
 
 An Inspec test is present to confirm the image is set up correctly.
 
 ```output
+$ cd inspec-profiles
 $ inspec exec azure-arm-docker-image-check -t docker://azure-arm
 
 Profile: Azure ARM Docker Image check (azure-arm-docker-image-check)
