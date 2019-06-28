@@ -17,3 +17,23 @@ even started.
 
 Due to that second one, this process will only work on Linux.
 
+### Test-Driven Infrastructure
+
+An Inspec test is present to confirm the image is set up correctly.
+
+```output
+$ inspec exec azure-arm-docker-image-check -t docker://azure-arm
+
+Profile: Azure ARM Docker Image check (azure-arm-docker-image-check)
+Version: 0.1.0
+Target:  docker://a52acdfea0fc405103dc1e48e082e609e1df15750e94ff276c29eacb41412b0b
+
+  ✔  git-installed: Check that Git is installed
+     ✔  System Package git should be installed
+  ✔  powershell-installed: Check that PowerShell Core is installed
+     ✔  System Package powershell should be installed
+
+
+Profile Summary: 2 successful controls, 0 control failures, 0 controls skipped
+Test Summary: 2 successful, 0 failures, 0 skipped
+```
