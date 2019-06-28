@@ -17,3 +17,11 @@ control 'powershell-installed' do
     it { should be_installed }
   end
 end
+
+control 'AZ-module-installed' do
+  title 'Check that the PowerShell AZ module is installed'
+  describe command('pwsh -c get-installedmodule -name az') do
+    # pwsh exits with status 0 even on error so that is not useful
+    its('stdout') { should match /\s+Az\s+PSGallery\s+/ }
+  end
+end

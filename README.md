@@ -32,8 +32,11 @@ Target:  docker://a52acdfea0fc405103dc1e48e082e609e1df15750e94ff276c29eacb41412b
      ✔  System Package git should be installed
   ✔  powershell-installed: Check that PowerShell Core is installed
      ✔  System Package powershell should be installed
+  ✔  AZ-module-installed: Check that the PowerShell AZ module is installed
+     ✔  Command: `pwsh -c get-installedmodule -name az` stdout should match /\s+Az\s+PSGallery\s+/
 
 
-Profile Summary: 2 successful controls, 0 control failures, 0 controls skipped
-Test Summary: 2 successful, 0 failures, 0 skipped
+Profile Summary: 3 successful controls, 0 control failures, 0 controls skipped
+Test Summary: 3 successful, 0 failures, 0 skipped
+
 ```
