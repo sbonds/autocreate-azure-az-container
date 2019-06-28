@@ -1,8 +1,4 @@
-# azure-learning
-
-Mini-projects from the process of learning the Microsoft Azure cloud
-
-## Automated Azure ARM Powershell Controller Host Setup
+# Automated Azure ARM Powershell Controller Host Setup
 
 Chris Neale posted [this great guide to setting up a Docker host for running Azure scripts](https://www.chrisneale.org/PowerShellAzModulesAndGitInDocker/). 
 Often the hardest part for getting automation working is creating an environment where the automation works. His config works great, but perhaps it's worth
