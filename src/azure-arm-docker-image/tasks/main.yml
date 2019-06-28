@@ -1,0 +1,32 @@
+---
+- name: Create a docker container
+  delegate_to: localhost
+  docker_container:
+    name: azure-arm
+    image: centos
+    command: sleep infinity
+- name: Add Docker container to inventory for future reconfiguration
+  add_host:
+    name: azure-arm
+    ansible_connection: docker
+    ansible_user: root
+  changed_when: false
+- name: Install Git in container
+  delegate_to: azure-arm
+  yum:
+    name: git
+    state: latest
+- name: Set up Microsoft Yum repo
+  delegate_to: azure-arm
+  get_url:
+    url: https://packages.microsoft.com/config/rhel/7/prod.repo
+    dest: /etc/yum.repos.d/microsoft.repo
+    mode: '0644'
+- name: Install Powershell Core from Microsoft
+  delegate_to: azure-arm
+  yum:
+    name: powershell
+    state: latest
+- name: Install Powershell AZ module from Microsoft
+  delegate_to: azure-arm
+  command: "pwsh -c install-module az -force"

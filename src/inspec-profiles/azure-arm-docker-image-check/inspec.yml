@@ -1,0 +1,10 @@
+name: azure-arm-docker-image-check
+title: Azure ARM Docker Image check
+maintainer: Steve Bonds
+copyright: Steve Bonds
+copyright_email: sbonds@gmail.com
+license: GPL-3.0
+summary: Checks that a Docker image is suitable for running Azure ARM PowerShell scripts
+version: 0.1.0
+supports:
+  platform: linux
