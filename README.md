@@ -68,3 +68,21 @@ v2: digest: sha256:194be9f07501c1f5f0e978d4d973e7f1b39ab41e27e8ad98b30e0725c74fb
 docker pull sbonds/centos_az_pwsh_git
 docker run -it sbonds/centos_az_pwsh_git pwsh
 ```
+
+## Docker Image vs. Plain PowerShell
+
+### Pros
+
+* Automated setup could lead to CI/CD methods
+* Consistent scripting envirionment between users
+* Need to pull in scripts vs. locally edited version (forces version history)
+* Cross-platform support
+* Create private versions with support scripts included with image
+
+### Cons
+
+* Harder to maintain state (E.g. logins especially) -- new Docker image wipes login info
+* More software to set up and configure (Docker)
+* More software to break (Docker local config)
+* Need to pull in scripts vs. locally edited version (delays between minor fixes and testing)
+
