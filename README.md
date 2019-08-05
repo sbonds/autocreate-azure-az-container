@@ -11,7 +11,8 @@ even started.
 * Docker
 * Ansible
 
-Due to that second one, this process will only work on Linux.
+Due to that second one, this process will only work on Linux. Automating this setup could lead to a CI/CD based auto-build and auto-deploy of a new Docker
+image based on changes made to the master branch.
 
 ## Running the Ansible Playbook
 
@@ -42,4 +43,28 @@ Target:  docker://a52acdfea0fc405103dc1e48e082e609e1df15750e94ff276c29eacb41412b
 Profile Summary: 3 successful controls, 0 control failures, 0 controls skipped
 Test Summary: 3 successful, 0 failures, 0 skipped
 
+```
+
+## Publishing the Docker Image
+
+While creating the image automatically requires Ansible and, in turn, Linux, using the image does not. Publishing the Docker image artifact to a location like Docker Hub
+lets anyone use it relatively easily.
+
+For example, to commit a recent rebuild (v2) to my (sbonds) docker hub repository:
+
+```bash
+$ docker commit azure-arm sbonds/centos_az_pwsh_git:v2
+sha256:d3852de8e3863db3195b71355bfbcd6506e2b372533ac2b0d5179c3cdfb34ad0
+$ docker push sbonds/centos_az_pwsh_git:v2
+The push refers to a repository [docker.io/sbonds/centos_az_pwsh_git]
+05054a7d1c7a: Pushed
+d69483a6face: Layer already exists
+v2: digest: sha256:194be9f07501c1f5f0e978d4d973e7f1b39ab41e27e8ad98b30e0725c74fbcbd size: 742
+```
+
+## Using the Docker Image
+
+```bash
+docker pull sbonds/centos_az_pwsh_git
+docker run -it sbonds/centos_az_pwsh_git pwsh
 ```
